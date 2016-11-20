@@ -47,4 +47,16 @@ public class Neuron {
 
         return ret;
     }
+
+    public String traceMemory(Long memoryidx) {
+
+        String ret = " " + memory;
+
+        Neuron mem = pathways.get(memoryidx);
+        if(mem != null) {
+            ret += mem.traceMemory(memoryidx);
+        }
+
+        return ret;
+    }
 }

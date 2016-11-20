@@ -1,11 +1,11 @@
 package com.ai;
 import java.nio.file.Files;
-import java.util.HashMap;
+import java.nio.file.OpenOption;
 import java.nio.file.Paths;
-import java.io.IOException;
-import java.util.List;
-import java.util.logging.Level;
+import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.FileAttribute;
 import java.util.logging.Logger;
+import java.util.*;
 
 public class Loader {
 
@@ -35,48 +35,71 @@ public class Loader {
         return index;
     }
 
-    public static long loadPersonality(HashMap<String,Neuron> index) {
+    public static Neuron addMemory(long memoryid, HashMap<String,Neuron> index, String thought) {
+
+        Neuron startingNeuron = null;
+        Neuron previousNeuron = null;
+        String[] dvalues = thought.split(" ");
+
+        for(int i2=0;i2<dvalues.length;i2++) {
+            if(!index.containsKey(dvalues[i2])) {
+                Neuron n = new Neuron();
+                n.memory = dvalues[i2];
+                index.put(dvalues[i2], n);
+            }
+
+            Neuron n = index.get(dvalues[i2]);
+            if(previousNeuron != null){
+                previousNeuron.pathways.put(memoryid,n);
+                //System.out.println("#" + memoryid + " " + previousNeuron.memory + " added pathway to " + n.memory);
+                previousNeuron = n;
+            }else {
+                previousNeuron = n;
+                startingNeuron = n;
+            }
+        }
+
+        LOGGER.info(startingNeuron.trace(memoryid));
+
+        return startingNeuron;
+    }
+
+    public static void savePersonality(HashMap<Long,Neuron> memories) {
+
+        List<String> memlist = new ArrayList<String>();
+        for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
+            memlist.add(entry.getValue().traceMemory(entry.getKey()));
+        }
+        try {
+            Files.write(Paths.get("data/newPersonality.txt"), memlist, StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void trace(HashMap<Long,Neuron> memories) {
+
+        for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
+            LOGGER.info(entry.getValue().trace(entry.getKey()));
+        }
+    }
+
+    public static void loadPersonality(HashMap<String,Neuron> index, HashMap<Long,Neuron> memories) {
 
         long memoryid = 0;
 
         try {
             List<String> slst = Files.readAllLines(Paths.get("data/personality.txt"));
             String[] thoughts = slst.toArray(new String[]{});
-            Neuron previousNeuron;
             for(int i=0;i<thoughts.length;i++) {
-
-                Neuron startingNeuron = null;
                 memoryid++;
-                previousNeuron = null;
-                String[] dvalues = thoughts[i].split(" ");
-
-                for(int i2=0;i2<dvalues.length;i2++) {
-                    if(!index.containsKey(dvalues[i2])) {
-                        Neuron n = new Neuron();
-                        n.memory = dvalues[i2];
-                        index.put(dvalues[i2], n);
-                    }
-
-                    Neuron n = index.get(dvalues[i2]);
-                    if(previousNeuron != null){
-                        previousNeuron.pathways.put(memoryid,n);
-                        //System.out.println("#" + memoryid + " " + previousNeuron.memory + " added pathway to " + n.memory);
-                        previousNeuron = n;
-                    }else {
-                        previousNeuron = n;
-                        startingNeuron = n;
-                    }
-                }
-
-                LOGGER.info(startingNeuron.trace(memoryid));
+                memories.put(memoryid,addMemory(memoryid, index, thoughts[i]));
             }
-
 
         } catch (Throwable e) {
             e.printStackTrace();
         }
 
-        return memoryid;
     }
 
 }

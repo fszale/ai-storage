@@ -80,7 +80,7 @@ public class Loader {
     public static void trace(HashMap<Long,Neuron> memories) {
 
         for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
-            LOGGER.info(entry.getValue().trace(entry.getKey()));
+            System.out.println(entry.getValue().trace(entry.getKey()));
         }
     }
 

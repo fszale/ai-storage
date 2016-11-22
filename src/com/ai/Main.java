@@ -1,4 +1,6 @@
 package com.ai;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
 import java.util.*;
 import java.util.logging.Level;
@@ -7,36 +9,71 @@ public class Main {
 
     private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
 
+    private static void showHelp() {
+
+        try {
+            List<String> lst = Files.readAllLines(Paths.get("data/help.txt"));
+            String[] content = lst.toArray(new String[]{});
+            for(int i=0;i<content.length;i++) {
+                System.out.println(content[i]);
+            }
+
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
 
         // debugger off
         LOGGER.setLevel(Level.OFF);
 
-        // build up the index of keywords
-        HashMap<String,Neuron> index = Loader.loadDictionary();
-        Persona aipersona = new Persona("AI Person");
+        PersonaFactory pf = new PersonaFactory();
+        Persona cperson = pf.get("AI Person");
 
-        // load the personality from a file
-        Loader.loadPersonality(index, aipersona.memories);
-
-        String inline = "";
+        String command = "";
         do
         {
-            inline = Input.readInputLine("Say something ... (type quit to end)\n");
+            command = Input.readInputLine("Say something ... (type quit. to end)\n");
 
-            if (inline.equalsIgnoreCase("quit")) {
-                System.exit(0);
+            switch(command.toLowerCase()) {
 
-            } else if (inline.equalsIgnoreCase("save")) {
-                Loader.savePersonality(aipersona.memories);
+                case "quit.":
+                    System.exit(0);
+                    break;
 
-            } else if (inline.equalsIgnoreCase("trace")) {
-                Loader.trace(aipersona.memories);
+                case "save.":
+                    pf.save();
+                    break;
 
-            }else {
-                // train based on input specified
-                long memoryid = aipersona.memories.size() + 1;
-                aipersona.memories.put(memoryid,Loader.addMemory(memoryid, index, inline));
+                case "load.":
+                    pf.load();
+                    break;
+
+                case "trace.":
+                    pf.trace();
+                    break;
+
+                case "help":
+                    showHelp();
+
+                case "optimize":
+                    // todo: add code to optimize and write code
+                    break;
+
+                case "train.":
+                    String name = Input.readInputLine("Name to train? (default is 'AI Person')\n");
+                    cperson = pf.get(name);
+                    break;
+
+                case "status.":
+                    pf.status();
+                    System.out.println("Current persona is " + cperson.name);
+                    break;
+
+                default:
+                    cperson.addMemory(command);
+                    break;
             }
         }
         while (true);

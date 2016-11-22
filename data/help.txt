@@ -1,0 +1,9 @@
+AI welcomes you.
+
+help          - this help information
+quit.         - terminate
+train.        - Turns on training mode for specified entity name, Default AI persona name is 'AI Person'
+trace.        - Display memories chain links
+save.         - Commit current memories to a new output file located in \output folder
+load.         - Load current memories for each of the personalities present from data in the \output folder
+status.       - Current system status

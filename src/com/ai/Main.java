@@ -28,13 +28,13 @@ public class Main {
         // debugger off
         LOGGER.setLevel(Level.OFF);
 
-        PersonaFactory pf = new PersonaFactory();
-        Persona cperson = pf.get("AI Person");
+        PersonaFactory.init();
+        Persona cperson = PersonaFactory.get("AI Person");
 
         String command = "";
         do
         {
-            command = Input.readInputLine("Say something ... (type quit. to end)\n");
+            command = Input.readInputLine("Say something ... (type quit. to end)\n\r");
 
             switch(command.toLowerCase()) {
 
@@ -43,15 +43,15 @@ public class Main {
                     break;
 
                 case "save.":
-                    pf.save();
+                    PersonaFactory.save();
                     break;
 
                 case "load.":
-                    pf.load();
+                    PersonaFactory.load();
                     break;
 
                 case "trace.":
-                    pf.trace();
+                    PersonaFactory.trace();
                     break;
 
                 case "help":
@@ -62,17 +62,22 @@ public class Main {
                     break;
 
                 case "train.":
-                    String name = Input.readInputLine("Name to train? (default is 'AI Person')\n");
-                    cperson = pf.get(name);
+                    String name = Input.readInputLine("Name to train? (default is 'AI Person')\n\r");
+                    cperson = PersonaFactory.get(name);
                     break;
 
                 case "status.":
-                    pf.status();
+                    PersonaFactory.status();
                     System.out.println("Current persona is " + cperson.name);
                     break;
 
                 default:
-                    cperson.addMemory(command);
+                    // if this is a question and current person is AI then we need to create a quest account
+                    if(command.trim().endsWith("?") && cperson.name == "AI Person"){
+                        name = Input.readInputLine("What is your name?\n\r");
+                        cperson = PersonaFactory.get(name);
+                    }
+                    Evaluator.ProcessStatement(cperson,command);
                     break;
             }
         }

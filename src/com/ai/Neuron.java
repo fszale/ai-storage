@@ -40,6 +40,10 @@ public class Neuron {
 
         String ret = " - > " + memory + " (p#" + pathways.size() + ")";
 
+        if(classifiers.size()>0) {
+            ret += " " + classifiers.toString();
+        }
+
         Neuron mem = pathways.get(memoryidx);
         if(mem != null) {
             ret += mem.trace(memoryidx);

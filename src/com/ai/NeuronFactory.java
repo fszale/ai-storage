@@ -36,7 +36,11 @@ public class NeuronFactory {
         return index;
     }
 
+
+
     public static Neuron addMemory(long memoryid, String thought) {
+
+        // todo as memory is added we need to evaluate language context (question,verb,noun,adjective,etc...)
 
         Neuron startingNeuron = null;
         Neuron previousNeuron = null;
@@ -59,6 +63,10 @@ public class NeuronFactory {
                 startingNeuron = n;
             }
         }
+
+        // evaluate if the thought is a question
+        if((thought.trim().endsWith("?")))
+        startingNeuron.classifiers.add("Question");
 
         LOGGER.info(startingNeuron.trace(memoryid));
 

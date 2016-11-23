@@ -10,25 +10,25 @@ import java.util.Map;
 
 public class PersonaFactory {
 
-    private HashMap<String,Persona> personas = new HashMap<String,Persona>();
+    private static HashMap<String,Persona> personas = new HashMap<String,Persona>();
 
-    public PersonaFactory(){
+    public static void init(){
 
         if(personas.size() == 0) {
             Persona p = new Persona("AI Person");
             personas.put("AI Person", p);
 
             // load the personality from a file
-            this.load();
+            load();
         }
 
     }
 
-    public Persona get(String name) {
+    public static Persona get(String name) {
 
         Persona p = null;
         if(!personas.containsKey(name)) {
-            p = this.add(name);
+            p = add(name);
         }else{
             p = personas.get(name);
         }
@@ -36,7 +36,7 @@ public class PersonaFactory {
 
     }
 
-    public void save() {
+    public static void save() {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();
@@ -53,7 +53,7 @@ public class PersonaFactory {
 
     }
 
-    public void load() {
+    public static void load() {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();
@@ -74,7 +74,7 @@ public class PersonaFactory {
         }
     }
 
-    public void trace() {
+    public static void trace() {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             NeuronFactory.trace(entry.getValue().memories);
@@ -82,7 +82,7 @@ public class PersonaFactory {
 
     }
 
-    public Persona add(String name) {
+    public static Persona add(String name) {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             if(entry.getKey() == name) {
@@ -96,7 +96,7 @@ public class PersonaFactory {
     }
 
 
-    public void status() {
+    public static void status() {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();

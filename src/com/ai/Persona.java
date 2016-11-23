@@ -15,11 +15,13 @@ public class Persona {
         this.name = name;
     }
 
-    public void addMemory(String thought) {
+    public Neuron addMemory(String thought) {
 
         long memoryid = memories.size() + 1;
-        memories.put(memoryid, NeuronFactory.addMemory(memoryid, thought));
+        Neuron newMem = NeuronFactory.addMemory(memoryid, thought);
+        memories.put(memoryid, newMem);
+
+        return newMem;
 
     }
-
 }

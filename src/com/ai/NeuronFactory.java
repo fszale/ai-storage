@@ -10,7 +10,7 @@ import java.util.*;
 public class NeuronFactory {
 
     private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
-    private final static HashMap<String,Neuron> dictionary = NeuronFactory.loadDictionary(); // build up the index of keywords
+    public final static HashMap<String,Neuron> dictionary = NeuronFactory.loadDictionary(); // build up the index of keywords
 
     private static HashMap<String,Neuron> loadDictionary() {
 
@@ -36,9 +36,21 @@ public class NeuronFactory {
         return index;
     }
 
+    public static void saveDictionary() {
 
+        String dic = "";
+        for(Map.Entry<String, Neuron> mems : dictionary.entrySet()) {
+            dic += mems.getValue().memory + " ";
+        }
+        try {
+            Files.write(Paths.get("data/basicword.txt"), dic.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
 
-    public static Neuron addMemory(long memoryid, String thought) {
+    }
+
+    public static Neuron addMemory(Persona person, long memoryid, String thought) {
 
         // todo as memory is added we need to evaluate language context (question,verb,noun,adjective,etc...)
 
@@ -55,7 +67,7 @@ public class NeuronFactory {
 
             Neuron n = dictionary.get(dvalues[i2]);
             if(previousNeuron != null){
-                previousNeuron.pathways.put(memoryid,n);
+                previousNeuron.getPathway(person).memories.put(memoryid,n);
                 //System.out.println("#" + memoryid + " " + previousNeuron.memory + " added pathway to " + n.memory);
                 previousNeuron = n;
             }else {
@@ -68,16 +80,19 @@ public class NeuronFactory {
         if((thought.trim().endsWith("?")))
         startingNeuron.classifiers.add("Question");
 
-        LOGGER.info(startingNeuron.trace(memoryid));
+        //LOGGER.info(startingNeuron.trace(memoryid));
 
         return startingNeuron;
     }
 
-    public static void trace(HashMap<Long,Neuron> memories) {
+    public static String trace(Persona person, HashMap<Long,Neuron> memories) {
 
+        String ret = "";
         for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
-            System.out.println(entry.getValue().trace(entry.getKey()));
+            ret += entry.getKey() + entry.getValue().trace(person, entry.getKey()) + "\n";
         }
+
+        return ret;
     }
 
 }

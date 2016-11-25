@@ -42,7 +42,7 @@ public class PersonaFactory {
             Persona p = entry.getValue();
             List<String> memlist = new ArrayList<String>();
             for(Map.Entry<Long, Neuron> mems : p.memories.entrySet()) {
-                memlist.add(mems.getValue().traceMemory(mems.getKey()));
+                memlist.add(mems.getValue().traceMemory(mems.getKey()).trim());
             }
             try {
                 Files.write(Paths.get("output/memories-"+p.name.replaceAll(" ","-")+".txt"), memlist, StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -65,7 +65,7 @@ public class PersonaFactory {
                 String[] thoughts = slst.toArray(new String[]{});
                 for(int i=0;i<thoughts.length;i++) {
                     memoryid++;
-                    p.memories.put(memoryid,NeuronFactory.addMemory(memoryid, thoughts[i]));
+                    p.memories.put(memoryid,NeuronFactory.addMemory(p, memoryid, thoughts[i]));
                 }
 
             } catch (Throwable e) {
@@ -77,7 +77,9 @@ public class PersonaFactory {
     public static void trace() {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
-            NeuronFactory.trace(entry.getValue().memories);
+            System.out.println(entry.getValue().name + " has " + entry.getValue().memories.size() + " memories.");
+            String ret = NeuronFactory.trace(entry.getValue(), entry.getValue().memories);
+            System.out.println(ret);
         }
 
     }

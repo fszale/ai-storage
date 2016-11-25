@@ -44,6 +44,7 @@ public class Main {
 
                 case "save.":
                     PersonaFactory.save();
+                    NeuronFactory.saveDictionary();
                     break;
 
                 case "load.":

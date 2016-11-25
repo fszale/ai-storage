@@ -20,7 +20,7 @@ public class Neuron {
     // add evaluators for I, It, We, Its (evaluators have a weighted percentage of which
     // perspective is applied more depending on the question asked)
     // add connections to other neurons
-    HashMap<Long,Neuron> pathways = new HashMap<Long,Neuron>();
+    HashMap<Persona,Pathway> pathways = new HashMap<Persona,Pathway>();
 
     // I think the evaluators should serve as a context to the neurons and connection pathways first
 
@@ -35,18 +35,34 @@ public class Neuron {
     // add code status (update,ready,pending)
     CodeStatus codeStatus = CodeStatus.Ready;
 
+    public Pathway getPathway(Persona person) {
 
-    public String trace(Long memoryidx) {
-
-        String ret = " - > " + memory + " (p#" + pathways.size() + ")";
-
-        if(classifiers.size()>0) {
-            ret += " " + classifiers.toString();
+        Pathway path = pathways.get(person);
+        if(path == null) {
+            path = new Pathway();
+            pathways.put(person, path);
         }
 
-        Neuron mem = pathways.get(memoryidx);
-        if(mem != null) {
-            ret += mem.trace(memoryidx);
+        return path;
+    }
+
+    public String trace(Persona person, Long memoryidx) {
+
+        String ret = " > " + memory;
+
+        Pathway path = pathways.get(person);
+        if(path != null) {
+
+            Neuron mem = path.memories.get(memoryidx);
+            //ret += " - > " + memory + " (p#" + memories.size() + ")";
+            if(mem != null && mem != this) {
+                //ret += " > " + mem.memory;
+                ret += mem.trace(person, memoryidx);
+            }
+
+            //if(classifiers.size()>0) {
+                //ret += " " + classifiers.toString();
+            //}
         }
 
         return ret;
@@ -56,9 +72,13 @@ public class Neuron {
 
         String ret = " " + memory;
 
-        Neuron mem = pathways.get(memoryidx);
-        if(mem != null) {
-            ret += mem.traceMemory(memoryidx);
+        for(Map.Entry<Persona, Pathway> path : pathways.entrySet()) {
+
+            HashMap<Long, Neuron> memories = path.getValue().memories;
+            Neuron mem = memories.get(memoryidx);
+            if (mem != null) {
+                ret += mem.traceMemory(memoryidx);
+            }
         }
 
         return ret;

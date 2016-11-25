@@ -18,7 +18,7 @@ public class Persona {
     public Neuron addMemory(String thought) {
 
         long memoryid = memories.size() + 1;
-        Neuron newMem = NeuronFactory.addMemory(memoryid, thought);
+        Neuron newMem = NeuronFactory.addMemory(this, memoryid, thought);
         memories.put(memoryid, newMem);
 
         return newMem;

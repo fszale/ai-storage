@@ -20,7 +20,7 @@ public class NeuronFactory {
         // load the index from a file
         try {
             String draw = new String(Files.readAllBytes(Paths.get("data/basicword.txt")));
-            String [] dvalues = draw.split(" ");
+            String [] dvalues = draw.split("\n");
             for(int i=0;i<dvalues.length;i++) {
                 Neuron n = new Neuron();
                 n.memory = dvalues[i];
@@ -40,7 +40,7 @@ public class NeuronFactory {
 
         String dic = "";
         for(Map.Entry<String, Neuron> mems : dictionary.entrySet()) {
-            dic += mems.getValue().memory + " ";
+            dic += mems.getValue().memory + "\n";
         }
         try {
             Files.write(Paths.get("data/basicword.txt"), dic.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -50,49 +50,22 @@ public class NeuronFactory {
 
     }
 
-    public static Neuron addMemory(Persona person, long memoryid, String thought) {
+    public static Neuron getNeuron(String itemMemory) {
 
-        // todo as memory is added we need to evaluate language context (question,verb,noun,adjective,etc...)
+        Neuron n = dictionary.get(itemMemory);
 
-        Neuron startingNeuron = null;
-        Neuron previousNeuron = null;
-        String[] dvalues = thought.split(" ");
-
-        for(int i2=0;i2<dvalues.length;i2++) {
-            if(!dictionary.containsKey(dvalues[i2])) {
-                Neuron n = new Neuron();
-                n.memory = dvalues[i2];
-                dictionary.put(dvalues[i2], n);
-            }
-
-            Neuron n = dictionary.get(dvalues[i2]);
-            if(previousNeuron != null){
-                previousNeuron.getPathway(person).memories.put(memoryid,n);
-                //System.out.println("#" + memoryid + " " + previousNeuron.memory + " added pathway to " + n.memory);
-                previousNeuron = n;
-            }else {
-                previousNeuron = n;
-                startingNeuron = n;
-            }
+        if(n == null) {
+            n = new Neuron();
+            n.memory = itemMemory;
+            dictionary.put(itemMemory, n);
         }
 
-        // evaluate if the thought is a question
-        if((thought.trim().endsWith("?")))
-        startingNeuron.classifiers.add("Question");
-
-        //LOGGER.info(startingNeuron.trace(memoryid));
-
-        return startingNeuron;
+        return n;
     }
 
-    public static String trace(Persona person, HashMap<Long,Neuron> memories) {
+    public static void status() {
 
-        String ret = "";
-        for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
-            ret += entry.getKey() + entry.getValue().trace(person, entry.getKey()) + "\n";
-        }
+        System.out.println("Dictinary has " + dictionary.size() + " entries.");
 
-        return ret;
     }
-
 }

@@ -41,8 +41,8 @@ public class PersonaFactory {
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();
             List<String> memlist = new ArrayList<String>();
-            for(Map.Entry<Long, Neuron> mems : p.memories.entrySet()) {
-                memlist.add(mems.getValue().traceMemory(mems.getKey()).trim());
+            for (int i = 0;i<p.memories.size();i++) {
+                memlist.add(p.memories.get(i).traceRaw());
             }
             try {
                 Files.write(Paths.get("output/memories-"+p.name.replaceAll(" ","-")+".txt"), memlist, StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
@@ -58,14 +58,11 @@ public class PersonaFactory {
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();
 
-            long memoryid = 0;
-
             try {
                 List<String> slst = Files.readAllLines(Paths.get("output/memories-"+p.name.replaceAll(" ","-")+".txt"));
                 String[] thoughts = slst.toArray(new String[]{});
                 for(int i=0;i<thoughts.length;i++) {
-                    memoryid++;
-                    p.memories.put(memoryid,NeuronFactory.addMemory(p, memoryid, thoughts[i]));
+                    p.addMemory(thoughts[i]);
                 }
 
             } catch (Throwable e) {
@@ -78,7 +75,7 @@ public class PersonaFactory {
 
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             System.out.println(entry.getValue().name + " has " + entry.getValue().memories.size() + " memories.");
-            String ret = NeuronFactory.trace(entry.getValue(), entry.getValue().memories);
+            String ret = entry.getValue().trace();
             System.out.println(ret);
         }
 

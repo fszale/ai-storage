@@ -17,15 +17,16 @@ public class Neuron {
         Retire
     };
 
-    // add evaluators for I, It, We, Its (evaluators have a weighted percentage of which
-    // perspective is applied more depending on the question asked)
     // add connections to other neurons
-    HashMap<Persona,Pathway> pathways = new HashMap<Persona,Pathway>();
+    HashMap<Memory,Neuron> relatedNeurons = new HashMap<Memory,Neuron>();
 
-    // I think the evaluators should serve as a context to the neurons and connection pathways first
+    // each neuron is part of a collection of neurons (memory)
+    // but it has to be in context of the memory and the person it belongs to
+    HashMap<Persona,Memory> relatedMemories = new HashMap<Persona,Memory>();
 
     // add storage for the actual thought/idea
     String memory = "";
+
     // add classifiers (tags)
     List<String> classifiers = new ArrayList<String>();
     // add status (dirty,pending classification, ready)
@@ -35,6 +36,13 @@ public class Neuron {
     // add code status (update,ready,pending)
     CodeStatus codeStatus = CodeStatus.Ready;
 
+    public String trace() {
+
+        return memory + " (rm:" + relatedMemories.size() + ",rn:" + relatedNeurons.size() + ")";
+
+    }
+
+    /*
     public Pathway getPathway(Persona person) {
 
         Pathway path = pathways.get(person);
@@ -83,4 +91,5 @@ public class Neuron {
 
         return ret;
     }
+    */
 }

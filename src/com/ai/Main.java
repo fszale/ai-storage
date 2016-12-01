@@ -69,6 +69,7 @@ public class Main {
 
                 case "status.":
                     PersonaFactory.status();
+                    NeuronFactory.status();
                     System.out.println("Current persona is " + cperson.name);
                     break;
 

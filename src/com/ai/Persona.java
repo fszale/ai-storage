@@ -9,19 +9,28 @@ import java.util.*;
 public class Persona {
 
     public String name = "";
-    public HashMap<Long,Neuron> memories = new HashMap<Long,Neuron>();
+    public ArrayList<Memory> memories = new ArrayList<Memory>();
 
     public Persona(String name) {
         this.name = name;
     }
 
-    public Neuron addMemory(String thought) {
+    public Memory addMemory(String thought) {
 
         long memoryid = memories.size() + 1;
-        Neuron newMem = NeuronFactory.addMemory(this, memoryid, thought);
-        memories.put(memoryid, newMem);
+        Memory newMem = new Memory(memoryid, this, thought);
+        memories.add(newMem);
 
         return newMem;
+    }
 
+    public String trace() {
+
+        String ret = "";
+        for (int i = 0;i<memories.size();i++) {
+            ret += memories.get(i).trace();
+        }
+
+        return ret;
     }
 }

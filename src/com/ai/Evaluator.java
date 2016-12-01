@@ -11,7 +11,7 @@ public class Evaluator {
         // classify the context of the statement
 
         // add memory of the statement to the persona interaction
-        Neuron newMem = source.addMemory(statement);
+        Memory newMem = source.addMemory(statement);
 
         // determine response based on the context classification
         Respond(statement);
@@ -58,15 +58,22 @@ public class Evaluator {
             }
             words.add(n);
         }
+        System.out.println("words " + words.size());
+        System.out.println("person is " + cperson.name);
+        /*
         for (int i = 0;i<words.size();i++) {
+            System.out.println("word " + words.get(i).memory);
             Pathway path = words.get(i).pathways.get(cperson);
+            System.out.println("pathways " + words.get(i).pathways.size());
             if(path != null) {
+                System.out.println("looking for memories");
                 HashMap<Long, Neuron> memories = path.memories;
                 for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
                     System.out.println(entry.getValue().trace(cperson,entry.getKey()) + "\n");
                 }
             }
         }
+        */
     }
 
 }

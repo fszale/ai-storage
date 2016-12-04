@@ -40,7 +40,7 @@ public class Main {
 
                 case "quit.":
                     System.exit(0);
-                    break;
+                    return;
 
                 case "save.":
                     PersonaFactory.save();

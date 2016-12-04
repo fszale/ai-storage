@@ -21,10 +21,10 @@ public class Memory {
         Neuron parentNeuron = null;
         for(int i=0;i<dvalues.length;i++) {
 
-            Neuron n = NeuronFactory.getNeuron(dvalues[i]);
+            String cs = dvalues[i].replaceAll("\\?","");
+            Neuron n = NeuronFactory.getNeuron(cs);
             neurons.add(n);
 
-            n.relatedMemories.put(p, this);  // relate neuron to this memory
             if(parentNeuron != null) {  // relate to parent Neuron when available
                 parentNeuron.relatedNeurons.put(this, n);
             }

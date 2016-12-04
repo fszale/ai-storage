@@ -33,7 +33,7 @@ public class Evaluator {
     private static String RemoveQuestion(String statement) {
 
         String ret;
-        ret = statement.replaceFirst("what do you","");
+        ret = statement.replaceFirst("what do you","").replaceAll("\\?","");
 
         return ret;
     }
@@ -49,17 +49,16 @@ public class Evaluator {
         // look through dictionary, find memories related to the AI Person
         String[] dvalues = statement.split(" ");
         ArrayList<Neuron> words = new ArrayList<Neuron>();
-        for (int i2 = 0; i2 < dvalues.length; i2++) {
-            Neuron n = NeuronFactory.dictionary.get(dvalues[i2]);
-            if(n == null) {
-                n = new Neuron();
-                n.memory = dvalues[i2];
-                NeuronFactory.dictionary.put(dvalues[i2], n);
+        for (int i = 0; i < dvalues.length; i++) {
+            Neuron n = NeuronFactory.getNeuron(dvalues[i]);
+            System.out.println("Found " + n.trace());
+
+            for(Map.Entry<Memory, Neuron> entry : n.relatedNeurons.entrySet()) {
+                System.out.println(entry.getKey().trace());
             }
+
             words.add(n);
         }
-        System.out.println("words " + words.size());
-        System.out.println("person is " + cperson.name);
         /*
         for (int i = 0;i<words.size();i++) {
             System.out.println("word " + words.get(i).memory);

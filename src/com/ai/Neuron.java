@@ -20,10 +20,6 @@ public class Neuron {
     // add connections to other neurons
     HashMap<Memory,Neuron> relatedNeurons = new HashMap<Memory,Neuron>();
 
-    // each neuron is part of a collection of neurons (memory)
-    // but it has to be in context of the memory and the person it belongs to
-    HashMap<Persona,Memory> relatedMemories = new HashMap<Persona,Memory>();
-
     // add storage for the actual thought/idea
     String memory = "";
 
@@ -38,7 +34,7 @@ public class Neuron {
 
     public String trace() {
 
-        return memory + " (rm:" + relatedMemories.size() + ",rn:" + relatedNeurons.size() + ")";
+        return memory + " (rn:" + relatedNeurons.size() + ")";
 
     }
 

@@ -1,5 +1,9 @@
 package com.ai;
 
+import org.json.*;
+
+import java.io.FileReader;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -55,14 +59,21 @@ public class PersonaFactory {
 
     public static void load() {
 
+        // a lot of bad memories may make this personality put more weight on the negative feelings slanting its personality
+        // the memories need to span a wide variety to disperse feelings to develop well represented feeling weights
+
         for(Map.Entry<String, Persona> entry : personas.entrySet()) {
             Persona p = entry.getValue();
 
             try {
-                List<String> slst = Files.readAllLines(Paths.get("output/memories-"+p.name.replaceAll(" ","-")+".txt"));
-                String[] thoughts = slst.toArray(new String[]{});
-                for(int i=0;i<thoughts.length;i++) {
-                    p.addMemory(thoughts[i]);
+
+                FileReader fr = new FileReader(Paths.get("output/memories-"+p.name.replaceAll(" ","-")+".json").toString());
+                JSONTokener tk = new JSONTokener(fr);
+                JSONArray ja = new JSONArray(tk);
+                JSONObject jo = null;
+                for(int ix=0;ix<ja.length();ix++) {
+                    jo = ja.getJSONObject(ix);
+                    p.addMemory(Long.parseLong(jo.get("id").toString()), jo.get("idea").toString());
                 }
 
             } catch (Throwable e) {

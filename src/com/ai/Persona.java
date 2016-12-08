@@ -9,16 +9,26 @@ import java.util.*;
 public class Persona {
 
     public String name = "";
+    public Long memoryidx = 0L;
     public ArrayList<Memory> memories = new ArrayList<Memory>();
 
     public Persona(String name) {
         this.name = name;
     }
 
+    public Memory addMemory(Long pmemidx, String thought) {
+
+        memoryidx = pmemidx;
+        Memory newMem = new Memory(memoryidx, this, thought);
+        memories.add(newMem);
+
+        return newMem;
+    }
+
     public Memory addMemory(String thought) {
 
-        long memoryid = memories.size() + 1;
-        Memory newMem = new Memory(memoryid, this, thought);
+        memoryidx++;
+        Memory newMem = new Memory(memoryidx, this, thought);
         memories.add(newMem);
 
         return newMem;

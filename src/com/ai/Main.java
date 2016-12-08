@@ -31,6 +31,8 @@ public class Main {
         PersonaFactory.init();
         Persona cperson = PersonaFactory.get("AI Person");
 
+        FeelingFactory.init();
+
         String command = "";
         do
         {
@@ -70,6 +72,7 @@ public class Main {
                 case "status.":
                     PersonaFactory.status();
                     NeuronFactory.status();
+                    FeelingFactory.status();
                     System.out.println("Current persona is " + cperson.name);
                     break;
 

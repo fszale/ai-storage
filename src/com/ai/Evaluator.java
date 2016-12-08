@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Evaluator {
 
+    public static Memory runningMemory = null;
+
     public static void ProcessStatement(Persona source, String statement) {
 
         // todo look at the full context of the question across four quadrants
@@ -12,6 +14,13 @@ public class Evaluator {
 
         // add memory of the statement to the persona interaction
         Memory newMem = source.addMemory(statement);
+
+        // relate this new memory to the last memory for AI Person
+
+        // add related memory if needed
+        if(runningMemory != null) {
+            runningMemory.relatedMemories.add(newMem);
+        }
 
         // determine response based on the context classification
         Respond(statement);
@@ -59,20 +68,7 @@ public class Evaluator {
 
             words.add(n);
         }
-        /*
-        for (int i = 0;i<words.size();i++) {
-            System.out.println("word " + words.get(i).memory);
-            Pathway path = words.get(i).pathways.get(cperson);
-            System.out.println("pathways " + words.get(i).pathways.size());
-            if(path != null) {
-                System.out.println("looking for memories");
-                HashMap<Long, Neuron> memories = path.memories;
-                for(Map.Entry<Long, Neuron> entry : memories.entrySet()) {
-                    System.out.println(entry.getValue().trace(cperson,entry.getKey()) + "\n");
-                }
-            }
-        }
-        */
+
     }
 
 }

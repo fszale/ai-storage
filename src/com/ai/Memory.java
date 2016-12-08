@@ -1,14 +1,20 @@
 package com.ai;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Memory {
+
+    // todo add feeling classifications to determine if the memory is happy/sad/odd
 
     public Long memoryId = 0L;
     public Persona person = null;
     public ArrayList<Neuron> neurons = new ArrayList<Neuron>();
 
-    public ArrayList<String> classifiers  = new ArrayList<String>(); // happy, sad, etc.
+    // add connections to other memories
+    public ArrayList<Memory> relatedMemories = new ArrayList<Memory>();
+
+    public ArrayList<Memory> relatedEmotions = new ArrayList<Memory>(); // happy, sad, other Neurons.
 
     // constructor
     public Memory(Long memidx, Persona p, String thought) {

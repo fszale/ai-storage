@@ -1,0 +1,478 @@
+[
+  {
+    "neuron": "feeling",
+    "relate": [
+      {
+        "neuron": "pleasant",
+        "relate": [
+          {
+            "neuron": "open",
+            "relate": [
+              {
+                "neuron": "understanding"
+              },
+              {
+                "neuron": "confident"
+              },
+              {
+                "neuron": "reliable"
+              },
+              {
+                "neuron": "easy"
+              },
+              {
+                "neuron": "amazed"
+              },
+              {
+                "neuron": "free"
+              },
+              {
+                "neuron": "sympathetic"
+              },
+              {
+                "neuron": "interested"
+              },
+              {
+                "neuron": "satisfied"
+              },
+              {
+                "neuron": "receptive"
+              },
+              {
+                "neuron": "accepting"
+              },
+              {
+                "neuron": "kind"
+              }
+            ]
+          },
+          {
+            "neuron": "happy",
+            "relate": [
+              {
+                "neuron": "great"
+              },
+              {
+                "neuron": "gay"
+              },
+              {
+                "neuron": "joyous"
+              },
+              {
+                "neuron": "lucky"
+              },
+              {
+                "neuron": "fortunate"
+              },
+              {
+                "neuron": "delighted"
+              },
+              {
+                "neuron": "overjoyed"
+              },
+              {
+                "neuron": "gleeful"
+              },
+              {
+                "neuron": "thankful"
+              },
+              {
+                "neuron": "important"
+              },
+              {
+                "neuron": "festive"
+              },
+              {
+                "neuron": "ecstatic"
+              },
+              {
+                "neuron": "satisfied"
+              },
+              {
+                "neuron": "glad"
+              },
+              {
+                "neuron": "cheerful"
+              },
+              {
+                "neuron": "sunny"
+              },
+              {
+                "neuron": "merry"
+              },
+              {
+                "neuron": "elated"
+              },
+              {
+                "neuron": "jubilant"
+              }
+            ]
+          },
+          {
+            "neuron": "alive",
+            "relate": [
+              {
+                "neuron": "playful"
+              },
+              {
+                "neuron": "courageous"
+              },
+              {
+                "neuron": "energetic"
+              },
+              {
+                "neuron": "liberated"
+              },
+              {
+                "neuron": "optimistic"
+              },
+              {
+                "neuron": "provocative"
+              },
+              {
+                "neuron": "impulsive"
+              },
+              {
+                "neuron": "free"
+              },
+              {
+                "neuron": "frisky"
+              },
+              {
+                "neuron": "animated"
+              },
+              {
+                "neuron": "spirited"
+              },
+              {
+                "neuron": "thrilled"
+              },
+              {
+                "neuron": "wonderful"
+              }
+            ]
+          },
+          {
+            "neuron": "good",
+            "relate": [
+              {
+                "neuron": "calm"
+              },
+              {
+                "neuron": "peaceful"
+              },
+              {
+                "neuron": "at ease"
+              },
+              {
+                "neuron": "comfortable"
+              },
+              {
+                "neuron": "pleased"
+              },
+              {
+                "neuron": "encouraged"
+              },
+              {
+                "neuron": "clever"
+              },
+              {
+                "neuron": "surprised"
+              },
+              {
+                "neuron": "content"
+              },
+              {
+                "neuron": "quiet"
+              },
+              {
+                "neuron": "certain"
+              },
+              {
+                "neuron": "relaxed"
+              },
+              {
+                "neuron": "serene"
+              },
+              {
+                "neuron": "free and easy"
+              },
+              {
+                "neuron": "bright"
+              },
+              {
+                "neuron": "blessed"
+              },
+              {
+                "neuron": "reassured"
+              }
+            ]
+          },
+          {
+            "neuron": "love",
+            "relate": [
+              {
+                "neuron": "loving"
+              },
+              {
+                "neuron": "considerate"
+              },
+              {
+                "neuron": "affectionate"
+              },
+              {
+                "neuron": "sensitive"
+              },
+              {
+                "neuron": "tender"
+              },
+              {
+                "neuron": "devoted"
+              },
+              {
+                "neuron": "attracted"
+              },
+              {
+                "neuron": "passionate"
+              },
+              {
+                "neuron": "admiration"
+              },
+              {
+                "neuron": "warm"
+              },
+              {
+                "neuron": "touched"
+              },
+              {
+                "neuron": "sympathy"
+              },
+              {
+                "neuron": "close"
+              },
+              {
+                "neuron": "loved"
+              },
+              {
+                "neuron": "comforted"
+              },
+              {
+                "neuron": "drawn toward"
+              }
+            ]
+          },
+          {
+            "neuron": "interested",
+            "relate": [
+              {
+                "neuron": "concerned"
+              },
+              {
+                "neuron": "affected"
+              },
+              {
+                "neuron": "fascinated"
+              },
+              {
+                "neuron": "intrigued"
+              },
+              {
+                "neuron": "absorbed"
+              },
+              {
+                "neuron": "inquisitive"
+              },
+              {
+                "neuron": "nosy"
+              },
+              {
+                "neuron": "snoopy"
+              },
+              {
+                "neuron": "engrossed"
+              },
+              {
+                "neuron": "curious"
+              }
+            ]
+          },
+          {
+            "neuron": "positive",
+            "relate": [
+              {
+                "neuron": "eager"
+              },
+              {
+                "neuron": "keen"
+              },
+              {
+                "neuron": "earnest"
+              },
+              {
+                "neuron": "intent"
+              },
+              {
+                "neuron": "anxious"
+              },
+              {
+                "neuron": "inspired"
+              },
+              {
+                "neuron": "determined"
+              },
+              {
+                "neuron": "excited"
+              },
+              {
+                "neuron": "enthusiastic"
+              },
+              {
+                "neuron": "bold"
+              },
+              {
+                "neuron": "brave"
+              },
+              {
+                "neuron": "daring"
+              },
+              {
+                "neuron": "challenged"
+              },
+              {
+                "neuron": "optimistic"
+              },
+              {
+                "neuron": "re-enforced"
+              },
+              {
+                "neuron": "confident"
+              },
+              {
+                "neuron": "hopeful"
+              }
+            ]
+          },
+          {
+            "neuron": "strong",
+            "relate": [
+              {
+                "neuron": "impulsive"
+              },
+              {
+                "neuron": "free"
+              },
+              {
+                "neuron": "sure"
+              },
+              {
+                "neuron": "certain"
+              },
+              {
+                "neuron": "rebellious"
+              },
+              {
+                "neuron": "unique"
+              },
+              {
+                "neuron": "dynamic"
+              },
+              {
+                "neuron": "tenacious"
+              },
+              {
+                "neuron": "hardy"
+              },
+              {
+                "neuron": "secure"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "neuron": "unpleasant",
+        "relate": [
+          {
+            "neuron": "angry",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "depressed",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "confused",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "helpless",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "indifferent",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "afraid",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "hurt",
+            "relate": [
+            ]
+          },
+          {
+            "neuron": "sad",
+            "relate": [
+              {
+                "neuron": "tearful"
+              },
+              {
+                "neuron": "sorrowful"
+              },
+              {
+                "neuron": "pained"
+              },
+              {
+                "neuron": "grief"
+              },
+              {
+                "neuron": "anguish"
+              },
+              {
+                "neuron": "desolate"
+              },
+              {
+                "neuron": "desperate"
+              },
+              {
+                "neuron": "pessimistic"
+              },
+              {
+                "neuron": "unhappy"
+              },
+              {
+                "neuron": "lonely"
+              },
+              {
+                "neuron": "grieved"
+              },
+              {
+                "neuron": "mournful"
+              },
+              {
+                "neuron": "dismayed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

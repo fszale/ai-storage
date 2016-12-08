@@ -1,4 +1,6 @@
 package com.ai;
+import com.ai.input.Input;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Logger;

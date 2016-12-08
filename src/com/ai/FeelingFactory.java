@@ -11,7 +11,9 @@ import java.util.ArrayList;
 public class FeelingFactory {
 
     private final static Memory feeling = null;
-    private final static ArrayList<Neuron> feelings = new ArrayList<Neuron>(); // build up index of feelings
+    private final static ArrayList<Feeling> feelings = new ArrayList<Feeling>(); // build up index of feelings
+
+    // todo finish adding feelings to the json file
 
     public static void init() {
 
@@ -36,8 +38,12 @@ public class FeelingFactory {
             e.printStackTrace();
         }
 
-        feelings.addAll(ret);
-
+        for(int i=0;i<ret.size();i++){
+            Feeling f = new Feeling();
+            f.neuron = ret.get(i);
+            //f.weight
+            feelings.add(f);
+        }
     }
 
     private static ArrayList<Neuron> loadNeuronRelation(JSONObject neuron) {

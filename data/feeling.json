@@ -395,36 +395,414 @@
           {
             "neuron": "angry",
             "relate": [
+              {
+                "neuron": "irritated"
+              },
+              {
+                "neuron": "enraged"
+              },
+              {
+                "neuron": "hostile"
+              },
+              {
+                "neuron": "insulting"
+              },
+              {
+                "neuron": "sore"
+              },
+              {
+                "neuron": "annoyed"
+              },
+              {
+                "neuron": "upset"
+              },
+              {
+                "neuron": "hateful"
+              },
+              {
+                "neuron": "unpleasant"
+              },
+              {
+                "neuron": "offensive"
+              },
+              {
+                "neuron": "bitter"
+              },
+              {
+                "neuron": "aggressive"
+              },
+              {
+                "neuron": "resentful"
+              },
+              {
+                "neuron": "inflamed"
+              },
+              {
+                "neuron": "provoked"
+              },
+              {
+                "neuron": "incensed"
+              },
+              {
+                "neuron": "infuriated"
+              },
+              {
+                "neuron": "cross"
+              },
+              {
+                "neuron": "worked up"
+              },
+              {
+                "neuron": "boiling"
+              },
+              {
+                "neuron": "fuming"
+              },
+              {
+                "neuron": "indignant"
+              }
             ]
           },
           {
             "neuron": "depressed",
             "relate": [
+              {
+                "neuron": "lousy"
+              },
+              {
+                "neuron": "disappointed"
+              },
+              {
+                "neuron": "discouraged"
+              },
+              {
+                "neuron": "ashamed"
+              },
+              {
+                "neuron": "powerless"
+              },
+              {
+                "neuron": "diminished"
+              },
+              {
+                "neuron": "guilty"
+              },
+              {
+                "neuron": "dissatisfied"
+              },
+              {
+                "neuron": "miserable"
+              },
+              {
+                "neuron": "detestable"
+              },
+              {
+                "neuron": "repugnant"
+              },
+              {
+                "neuron": "despicable"
+              },
+              {
+                "neuron": "disgusting"
+              },
+              {
+                "neuron": "abominable"
+              },
+              {
+                "neuron": "terrible"
+              },
+              {
+                "neuron": "in despair"
+              },
+              {
+                "neuron": "sulky"
+              },
+              {
+                "neuron": "bad"
+              },
+              {
+                "neuron": "a sense of loss"
+              }
             ]
           },
           {
             "neuron": "confused",
             "relate": [
+              {
+                "neuron": "upset"
+              },
+              {
+                "neuron": "doubtful"
+              },
+              {
+                "neuron": "uncertain"
+              },
+              {
+                "neuron": "indecisive"
+              },
+              {
+                "neuron": "perplexed"
+              },
+              {
+                "neuron": "embarrassed"
+              },
+              {
+                "neuron": "hesitant"
+              },
+              {
+                "neuron": "shy"
+              },
+              {
+                "neuron": "stupefied"
+              },
+              {
+                "neuron": "disillusioned"
+              },
+              {
+                "neuron": "unbelieving"
+              },
+              {
+                "neuron": "skeptical"
+              },
+              {
+                "neuron": "distrustful"
+              },
+              {
+                "neuron": "misgiving"
+              },
+              {
+                "neuron": "lost"
+              },
+              {
+                "neuron": "unsure"
+              },
+              {
+                "neuron": "uneasy"
+              },
+              {
+                "neuron": "pessimistic"
+              },
+              {
+                "neuron": "tense"
+              }
             ]
           },
           {
             "neuron": "helpless",
             "relate": [
+              {
+                "neuron": "incapable"
+              },
+              {
+                "neuron": "alone"
+              },
+              {
+                "neuron": "paralyzed"
+              },
+              {
+                "neuron": "fatigued"
+              },
+              {
+                "neuron": "useless"
+              },
+              {
+                "neuron": "inferior"
+              },
+              {
+                "neuron": "vulnerable"
+              },
+              {
+                "neuron": "empty"
+              },
+              {
+                "neuron": "forced"
+              },
+              {
+                "neuron": "hesitant"
+              },
+              {
+                "neuron": "despair"
+              },
+              {
+                "neuron": "frustrated"
+              },
+              {
+                "neuron": "distressed"
+              },
+              {
+                "neuron": "woeful"
+              },
+              {
+                "neuron": "pathetic"
+              },
+              {
+                "neuron": "tragic"
+              },
+              {
+                "neuron": "in a stew"
+              },
+              {
+                "neuron": "dominated"
+              }
             ]
           },
           {
             "neuron": "indifferent",
             "relate": [
+              {
+                "neuron": "insensitive"
+              },
+              {
+                "neuron": "dull"
+              },
+              {
+                "neuron": "nonchalant"
+              },
+              {
+                "neuron": "neutral"
+              },
+              {
+                "neuron": "reserved"
+              },
+              {
+                "neuron": "weary"
+              },
+              {
+                "neuron": "bored"
+              },
+              {
+                "neuron": "preoccupied"
+              },
+              {
+                "neuron": "cold"
+              },
+              {
+                "neuron": "disinterested"
+              },
+              {
+                "neuron": "lifeless"
+              }
             ]
           },
           {
             "neuron": "afraid",
             "relate": [
+              {
+                "neuron": "fearful"
+              },
+              {
+                "neuron": "terrified"
+              },
+              {
+                "neuron": "suspicious"
+              },
+              {
+                "neuron": "anxious"
+              },
+              {
+                "neuron": "alarmed"
+              },
+              {
+                "neuron": "panic"
+              },
+              {
+                "neuron": "nervous"
+              },
+              {
+                "neuron": "scared"
+              },
+              {
+                "neuron": "worried"
+              },
+              {
+                "neuron": "frightened"
+              },
+              {
+                "neuron": "timid"
+              },
+              {
+                "neuron": "shaky"
+              },
+              {
+                "neuron": "restless"
+              },
+              {
+                "neuron": "doubtful"
+              },
+              {
+                "neuron": "threatened"
+              },
+              {
+                "neuron": "cowardly"
+              },
+              {
+                "neuron": "quaking"
+              },
+              {
+                "neuron": "menaced"
+              },
+              {
+                "neuron": "wary"
+              }
             ]
           },
           {
             "neuron": "hurt",
             "relate": [
+              {
+                "neuron": "crushed"
+              },
+              {
+                "neuron": "tormented"
+              },
+              {
+                "neuron": "deprived"
+              },
+              {
+                "neuron": "pained"
+              },
+              {
+                "neuron": "tortured"
+              },
+              {
+                "neuron": "dejected"
+              },
+              {
+                "neuron": "rejected"
+              },
+              {
+                "neuron": "injured"
+              },
+              {
+                "neuron": "offended"
+              },
+              {
+                "neuron": "afflicted"
+              },
+              {
+                "neuron": "aching"
+              },
+              {
+                "neuron": "victimized"
+              },
+              {
+                "neuron": "heartbroken"
+              },
+              {
+                "neuron": "agonized"
+              },
+              {
+                "neuron": "appalled"
+              },
+              {
+                "neuron": "humiliated"
+              },
+              {
+                "neuron": "wronged"
+              },
+              {
+                "neuron": "alienated"
+              }
             ]
           },
           {

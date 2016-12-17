@@ -1,9 +1,8 @@
-package com.ai;
+package com.ai.storage;
 
 import org.json.*;
 
 import java.io.FileReader;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -14,7 +13,7 @@ import java.util.Map;
 
 public class PersonaFactory {
 
-    private static HashMap<String,Persona> personas = new HashMap<String,Persona>();
+    private static HashMap<String, Persona> personas = new HashMap<String, Persona>();
 
     public static void init(){
 

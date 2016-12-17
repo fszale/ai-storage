@@ -1,7 +1,6 @@
-package com.ai;
+package com.ai.storage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Memory {
 

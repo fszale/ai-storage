@@ -1,5 +1,6 @@
-package com.ai;
+package com.ai.storage;
 
+import com.ai.storage.Feeling;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;

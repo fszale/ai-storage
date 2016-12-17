@@ -1,4 +1,4 @@
-package com.ai;
+package com.ai.storage;
 
 public class Feeling {
 

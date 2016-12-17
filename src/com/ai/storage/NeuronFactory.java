@@ -1,26 +1,20 @@
-package com.ai;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+package com.ai.storage;
 
-import java.io.FileReader;
 import java.nio.file.Files;
-import java.nio.file.OpenOption;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.FileAttribute;
 import java.util.logging.Logger;
 import java.util.*;
 
 public class NeuronFactory {
 
-    private final static Logger LOGGER = Logger.getLogger(Main.class.getName());
-    public final static HashMap<String,Neuron> dictionary = NeuronFactory.loadDictionary(); // build up the index of keywords
+    private final static Logger LOGGER = Logger.getLogger(NeuronFactory.class.getName());
+    public final static HashMap<String, Neuron> dictionary = NeuronFactory.loadDictionary(); // build up the index of keywords
 
-    private static HashMap<String,Neuron> loadDictionary() {
+    private static HashMap<String, Neuron> loadDictionary() {
 
         // build up the index of keywords
-        HashMap<String,Neuron> index = new HashMap<String,Neuron>();
+        HashMap<String, Neuron> index = new HashMap<String, Neuron>();
 
         // load the index from a file
         try {

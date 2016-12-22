@@ -26,7 +26,7 @@ public class Memory {
         Neuron parentNeuron = null;
         for(int i=0;i<dvalues.length;i++) {
 
-            String cs = dvalues[i].replaceAll("\\?","");
+            String cs = dvalues[i].replaceAll("\\?","").trim();
             Neuron n = NeuronFactory.getNeuron(cs);
             neurons.add(n);
 

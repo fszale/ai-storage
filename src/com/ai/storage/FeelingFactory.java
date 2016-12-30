@@ -52,6 +52,7 @@ public class FeelingFactory {
         ArrayList<Neuron> ret = new ArrayList<Neuron>();
 
         Neuron n = NeuronFactory.getNeuron(neuron.get("neuron").toString());
+        n.classifiers.add("feeling");
         ret.add(n);
 
         if(neuron.has("relate")) {
